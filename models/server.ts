@@ -1,5 +1,6 @@
 import express, { Application } from 'express';
 import userRoutes from '../routes/usuario'
+import cors from 'cors';
 
 
 class Server {
@@ -14,8 +15,23 @@ class Server {
         this.app = express();
         this.port = process.env.PORT || '8000';
 
+        this.middlewares();
+
         // Definir as rotas
         this.routes();
+    }
+
+    //TODO: Conectar base de dados
+
+    middlewares() {
+        // CORS 
+        this.app.use(cors());
+
+        // Leitura do body
+        this.app.use(express.json())
+
+        // Diretório público
+        this.app.use(express.static('public'));
     }
 
     routes() {
