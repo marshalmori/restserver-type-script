@@ -1,7 +1,7 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes, Sequelize } from 'sequelize';
 import db from '../db/connection';
 
-const Usuario = db.define('Usuario', {
+const Usuario = db.define('usuarios', {
     nombre: {
         type: DataTypes.STRING
     },
@@ -10,7 +10,16 @@ const Usuario = db.define('Usuario', {
     },
     estado: {
         type: DataTypes.BOOLEAN
-    }
+    },
+    createdAt: {
+        field: 'created_at',
+        type: DataTypes.DATE,
+    },
+    updatedAt: {
+        field: 'updated_at',
+        type: DataTypes.DATE,
+    },
+   
 });
 
 export default Usuario;
